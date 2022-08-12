@@ -44,6 +44,27 @@ router.get('/', async (req, res) => {
   } catch(error) {
     res.status(500).json({ error: error });
   }
+});
+
+// READ - leitura dinâmica
+router.get('/:id', async (req, res) => {
+
+  const id = req.params.id
+
+  try {
+
+    const person = await Person.findOne({ _id: id });
+
+    if(!person) {
+      res.status(422).json({ message: 'Usuário não encontrado!' });
+      return;
+    }
+
+    res.status(200).json(person);
+
+  } catch(error) {
+    res.status(500).json({ error: error });
+  }
 })
 
 module.exports = router;

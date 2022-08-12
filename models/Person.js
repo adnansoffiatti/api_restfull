@@ -6,4 +6,4 @@ const Person = mongoose.model('Person', {
   approved: Boolean,
 });
 
-exports.module = Person;
+module.exports = Person;

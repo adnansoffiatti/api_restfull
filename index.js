@@ -4,9 +4,15 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT;
 
+const Person = require('./models/Person');
+
 // ler json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// rota da API
+const personRoutes = require('./routes/personRoutes');
+app.use('/person', personRoutes);
 
 // rota teste
 app.get('/', (req, res) => {
